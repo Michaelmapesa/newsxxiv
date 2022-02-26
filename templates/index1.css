@@ -10,6 +10,18 @@
     margin-left: 170px;
 }
 #footer{
-    height: 100px;
+    height: 30px;
     background-color: blue;
+    text-align: center;
+    font-weight: bold;
+
+}
+#head{
+    background-color: brown;
+    font-family: "Times New Roman", Times, serif;;
+   
+}
+#main{
+    background-color: yellow;
+    font-family: "Times New Roman", Times, serif;;
 }
