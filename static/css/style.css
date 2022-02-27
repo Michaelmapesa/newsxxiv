@@ -25,10 +25,17 @@
     background-color: yellow;
     font-family: "Times New Roman", Times, serif;;
 }
-.item{
-    display: block;
-}
+
 .wrapper .item img{
     height: 100px;
     width: 100px;
+}
+.wrapper{
+    height: 450px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: cornsilk;
+    padding: 10px;
 }
