@@ -17,62 +17,53 @@
     <title>News app</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <div>
-            <nav class="navbar navbar-inverse" id="nav">
+    <div class="container-fluid" id="nav">
+            <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
                   <li><a href="#">Home</a></li>
                   <li><a href="#">About</a></li>
                 </ul>
                 <p class="navbar-text" id="text">Welcome to the News App </p>
-              </nav>
-        </div>
+            </nav>
+            
+    </div>
+    <div class="containerfluid image">
 
     </div>
-
-    <div class="container-fluid image" >
-
-    </div>
-
-    <div class="container-fluid" id="cont1">
-        <p class="h3" id="tit">TODAY's TOP HEADLINES</p>
-        {%for title,desc,img,p_date,url in contents%}
-        <div class="wrapper">
-            <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
-            <div class="c-box">
-                <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
-                <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
-                <div class="content"><a href="{{url}}"><p>Published date:</p><p>{{p_date}}</p></a></div>
-
+    <div class="container-fluid" id="cont1" >
+            <p class="h3" id="tit">TODAY's TOP HEADLINES</p>
+            {%for title,desc,img,p_date,url in contents%}
+            <div class="wrapper">
+                <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+                <div class="c-box">
+                    <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
+                    <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
+                    <div class="content"><a href="{{url}}"><p>Published date:</p><p>{{p_date}}</p></a></div>
+                </div>
             </div>
+            {% endfor %}
 
-        </div>
-
-        {% endfor %}
-        
-    </div>
-
-    <div class="container-fluid" id="cont1">
-        <p class="h3" id="tit">TODAY'S NEWS</p>
-        {%for title,desc,img,p_date,url in all%}
-        <div class="wrapper">
-            <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
-            <div class="c-box">
-               <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
-               <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
-               <div class="content"><a href="{{url}}"><p>Published date:</p><p>{{p_date}}</p></a></div>
-
+            <p class="h3" id="tit">TODAY'S NEWS</p>
+            {%for title,desc,img,p_date,url in all%}
+            <div class="wrapper">
+                <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+                <div class="c-box">
+                   <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
+                   <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
+                   <div class="content"><a href="{{url}}"><p>Published date:</p><p>{{p_date}}</p></a></div>
+                </div>
+    
             </div>
-
-        </div>
-
-        {% endfor %}
+    
+            {% endfor %}
     </div>
 
+   <!----
     <div class="container-fluid" id="footer">
          <p>newsapp@Moringaschool.com</p>
         
     </div>
+    -->
     
 </body>
 </html>
