@@ -1,8 +1,13 @@
+body{
+    background-color: cornsilk;
+}
 .image{
-    height: 500px;
-    background-image: url("/image/news.jpeg");
-    background-size: contain;
+    height: 700px;
+    background-image: url("/static/images/back.jpeg");
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    
 }
 #text{
     font-weight: bold;
@@ -10,7 +15,7 @@
     margin-left: 170px;
 }
 #nav{
-    background-color: blue;
+    background-color: black;
 }
 ul>li>a{
     color: white;
@@ -35,17 +40,34 @@ ul>li>a{
     background-color: cornsilk;
     padding: 10px;
 }
+.c-box{
+    height: content;
+    display: flex;
+    max-width: 50%;
+    align-items: center;
+    padding: 10px;
+    flex-flow: column;
+    padding: 1px;
+}
 .wrapper .items{
     height: 300px;
     min-width: 30%;
     margin: 15px;
-    border-radius: 25px;
+    border-radius: 15px;
     flex-flow: column wrap;
     padding: 1px;
     border-bottom: 1px cornsilk;
     background-color: cornsilk;
 }
+.c-box .content{
+    height: content;
+    min-width: 30%;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+}
 .c-box .content p{
+    height: content;
     font-size: 15px;
     color: black;
     font-weight: bold;
