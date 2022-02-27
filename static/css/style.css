@@ -9,6 +9,12 @@
     font-size: large;
     margin-left: 170px;
 }
+#nav{
+    background-color: blue;
+}
+ul>li>a{
+    color: white;
+}
 #footer{
     height: 30px;
     background-color: blue;
@@ -53,6 +59,7 @@
 }
 #tit{
     text-align: center;
+    font-weight: bold;
 }
 .c-box .content h2{
     font-family: "Times New Roman", Times, serif;
