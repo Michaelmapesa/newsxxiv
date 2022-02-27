@@ -16,16 +16,6 @@
     font-weight: bold;
 
 }
-#head{
-    background-color: brown;
-    font-family: "Times New Roman", Times, serif;;
-   
-}
-#main{
-    background-color: yellow;
-    font-family: "Times New Roman", Times, serif;;
-}
-
 .wrapper .item img{
     height: 100px;
     width: 100px;
@@ -38,4 +28,35 @@
     justify-content: space-between;
     background-color: cornsilk;
     padding: 10px;
+}
+.wrapper .items{
+    height: 300px;
+    min-width: 30%;
+    margin: 15px;
+    border-radius: 25px;
+    flex-flow: column wrap;
+    padding: 1px;
+    border-bottom: 1px cornsilk;
+    background-color: cornsilk;
+}
+.c-box .content p{
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    background-color: cornsilk;
+
+}
+#cont1{
+    background-color: cornsilk;
+    font-weight: bold;
+}
+#tit{
+    text-align: center;
+}
+.c-box .content h2{
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: yellow;  
 }
