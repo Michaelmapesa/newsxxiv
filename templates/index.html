@@ -34,8 +34,8 @@
 
     </div>
 
-    <div class="container-fluid" id="head">
-        <p class="h3">TODAY's TOP HEADLINES</p>
+    <div class="container-fluid" id="cont1">
+        <p class="h3" id="tit">TODAY's TOP HEADLINES</p>
         {%for title,desc,img,p_date,url in contents%}
         <div class="wrapper">
             <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
@@ -52,12 +52,26 @@
         
     </div>
 
-    <div class="container-fluid" id="main">
-        <p class="h3">TODAY'S NEWS</p>
+    <div class="container-fluid" id="cont1">
+        <p class="h3" id="tit">TODAY'S NEWS</p>
+        {%for title,desc,img,p_date,url in all%}
+        <div class="wrapper">
+            <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+            <div class="c-box">
+               <div class="content"><a href="{{url}}"><h2>{{title}}</h2></a></div>
+               <div class="content"><a href="{{url}}"><p>{{desc}}</p></a></div>
+               <div class="content"><a href="{{url}}"><p>Published date:</p><p>{{p_date}}</p></a></div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
     </div>
 
     <div class="container-fluid" id="footer">
          <p>newsapp@Moringaschool.com</p>
+        
     </div>
     
 </body>
