@@ -1,70 +1,77 @@
-from importlib.resources import contents
-from py_compile import main
-from flask import Flask, render_template
-from newsapi import NewsApiClient
-from .config import Config
-import urllib.request,json
+import urllib
+import json
 
-api_key=None
-base_url=None
-base_url_for_everything=None
-base_url_top_headlines=None
-def topHeadlines():
-    #client apikey and id for authorization
-    newsapi = NewsApiClient(api_key= Config.API_KEY)
-    top_headlines = newsapi.get_top_headlines(sources="bbc-news")
+from .models import News
+
+
+api_key = None
+base_url = None
+source_url = None
+
+
+def configure_request(app):
+    global api_key, base_url, source_url
+    api_key = app.config['NEWS_API_KEY']
     
-    #fetching articles for top headlines
-    #make a list of content to store values on the list
-    t_articles = top_headlines['articles']
-    articles_results = []
-    news = []
-    desc = []
-    img = []
-    p_date = []
-    url = []
+    base_url = app.config['NEWS_API_BASE_URL']
+    source_url = app.config['NEWS_API_SOURCE_URL']
 
-     #function to fetch all the content
-    for i in range(len(t_articles)):
-        main_article= t_articles[i]
 
-     #appending list
-        news.append(main_article['title'])
-        desc.append(main_article['description'])
-        img.append(main_article['urlToImage'])
-        p_date.append(main_article['publishedAt'])
-        url.append(main_article['url'])
-        contents = zip(news,desc,img,p_date,url)
-        return contents
-
-     #client apikey and id for authorization
-    newsapi = NewsApiClient(api_key= Config.API_KEY)
-    #all main articles
-    all_articles = newsapi.get_everything(sources="bbc-news")
-    #fetching all articles of all article news
-    a_articles = all_articles['articles']
-    news_all = []
-    desc_all = []
-    img_all = []
-    p_date_all = []
-    url_all = []
-
-   
-
-    #function to fetch all the content in everything
-    for j in range(len(a_articles)):
-        a_articles=a_articles[j]
-
-       
-        #appending list all
-        news_all.append(a_articles['title'])
-        desc_all.append(a_articles['description'])
-        img_all.append(a_articles['urlToImage'])
-        p_date_all.append(a_articles['publishedAt'])
-        url_all.append(a_articles['url'])
-        all = zip(news_all,desc_all,img_all,p_date_all,url_all)
-        return all
-
+def get_news():
+    '''
+    Gets the json response from the request url
+    '''
+    get_news_url = base_url.format(api_key)
     
+    with urllib.request.urlopen(get_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_results = None
+
+        if get_news_response['status'] == 'ok':
+            news_results_list = get_news_response['articles']
+            news_results = process_results(news_results_list)
+
+    return news_results
 
 
+def get_news_by_source(source):
+    '''
+    Gets the json response from the request url
+    '''
+    get_news_url = source_url.format(source, api_key)
+    with urllib.request.urlopen(get_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_results = None
+
+        if get_news_response['status'] == 'ok':
+            news_results_list = get_news_response['articles']
+            news_results = process_results(news_results_list)
+
+    return news_results
+
+
+def process_results(news_list):
+    '''
+    Processes the movie results and transforms them to a list of objects
+    '''
+    news_results = []
+
+    for news_item in news_list:
+
+        title = news_item.get('title')
+        description = news_item.get('description')
+        urlToImage = news_item.get('urlToImage')
+        publishedAt = news_item['publishedAt'].split('T')[0]
+        author = news_item.get('author')
+        url = news_item.get('url')
+
+        if urlToImage != 'null':
+            news_object = News(title, description, urlToImage,
+                               publishedAt, author, url)
+            news_results.append(news_object)
+
+    return news_results

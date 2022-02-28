@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+
+{% block content %}
+<h2 class="news-page-heading">Top Headlines from {{news_page}} </h2>
+<div class="news-list">
+    {{ macro.displayNewsList(news_list) }}
+</div>
+
+
+{% endblock content %}
