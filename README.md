@@ -3,7 +3,7 @@ By Michael Mapesa Wanzala
 
 ## Project name
 
-News App
+Newsxxip
 
 ## Authors Info
 
